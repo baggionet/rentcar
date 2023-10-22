@@ -12,36 +12,40 @@ import { SubMain } from './components/SubMain';
 function App() {
   return (
     <div className="App">
-      <div className='contenedor-menu'>
-        <div className='row'>
-          <div className='col col-lg-1 col-md-2 col-sm-2 menu'>
-            <img src={menu}/>
+      <div className='row content-gral justify-content-center'>
+        <div className='col col-lg-6 col-md-12 col-sm-12 sub-content-gral'>
+          <div className='contenedor-menu '>
+            <div className='row '>
+              <div className='col col-lg-1 col-md-2 col-sm-2 menu'>
+                <img src={menu}/>
+              </div>
+              <div className='col col-lg-2 col-md-2 col-sm-2 logo'>
+                <img src={logo}/>
+              </div>
+              <div className='col pe-5 text-end tel'>
+                <img src={telefono}/>
+              </div>
+            </div>
           </div>
-          <div className='col col-lg-2 col-md-2 col-sm-2 logo'>
-            <img src={logo}/>
-          </div>
-          <div className='col pe-5 text-end tel'>
-            <img src={telefono}/>
-          </div>
-        </div>
-      </div>
 
-      <div className='fondo'>
-        <div className='main'>
-          <div className='row'> 
-            <div className='col col-md-8 col-sm-8'>
-              <img src={ef} />
-            </div>
-            <div className='col-md-4 col-sm-4'>
-              <h1>Paso 1</h1>
+          <div className='fondo'>
+            <div className='main'>
+              <div className='row'> 
+                <div className='col col-md-8 col-sm-8'>
+                  <img src={ef} />
+                </div>
+                <div className='col-md-4 col-sm-4'>
+                  <h1>Paso 1</h1>
+                </div>
+              </div>
+              <Formulario />
             </div>
           </div>
-          <Formulario />
+          <Cinta />
+          <SubMain />
+          <Footer />
         </div>
       </div>
-      <Cinta />
-      <SubMain />
-      <Footer />
     </div>
   );
 }

@@ -2,77 +2,50 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 
+
+import "react-datepicker/dist/react-datepicker.css";
+
+
 export const Formulario = () => {
+
+  const showOficinas =  () => {
+    fetch('js/Oficinas.json')
+    .then(response => response.json())
+    .then(datos => {
+    for (let i = 0; i < datos.length; i++) {
+      console.log(datos[i].StationName)
+      
+    }
+  })
+  }
+  const fecha = new Date();
   const [startFecha, setStartFecha] = useState(new Date());
   const [startHora, setStartHora] = useState(new Date());
   const [endFecha, setEndFecha] = useState(new Date());
   const [endHora, setEndHora] = useState(new Date());
-  let h = "5:54 pm"
+  console.log(startFecha, startHora)
+  console.log(startFecha, startHora)
 
-
-  const loginFetch = async () => {
-    await fetch('https://www.europcar.com.mx/ejercicio/rest',
-    {
-      'mode': 'cors',
-      headers: {
-          'Access-Control-Allow-Origin': '*',
-      }
-  },
-      {method: 'GET'},
-      {
-        "Function":"GetStationList",
-        "SessionId":"5968145",
-        "StationType":"CheckIn"
-      }
-    )
-    .then(response => {
-      console.log(response)
-    })
-    .catch((error) =>{
-      //console.log(error.toJSON);
-      console.log(error);
-      //console.log(error.response.headers);
-    })
-  }
-
-
-  const loginAxios = async (e)=>{
-    e.preventDefault();
-    await axios.get("https://www.europcar.com.mx/ejercicio/rest",
-    {
-      'mode': 'no-cors',
-      headers: {
-          'Access-Control-Allow-Origin': 'origin',
-      }
-  },)
-    .then((response) =>{
-      console.log(response)
-    })
-    .catch((error) =>{
-      console.log(error.toJSON);
-      console.log(error.config.headers);
-      //console.log(error.response.headers);
-    })
-  }
   return (
     <div>
         <div className='elForm'>
-          <form onSubmit={loginAxios}>
+          <form >
             <div className='row mb-4'>
               <div className='col col-lg-6 col-md-6 col-sm-12 px-4'>
                 <label  className='form-label'>OFICINA DE ENTREGA</label>
                 <input type="text" className='select-oficina' />
 
                 <div className='row pt-4'>
-                  <div className='col col-lg-6 col-md-6 col-sm-6'>
+                  <div className='col col-lg-7 col-md-7 col-sm-7'>
                   <DatePicker
+
                     className='select-fecha'
-                    dateFormat="yyyy/MM/dd"
+                    dateFormat="dd/MM/yyyy"
                     selected={startFecha}
-                    onChange={(date) => setStartFecha(date)}
+                    onChange={(date) => setStartFecha(date) }
                   />
                   </div>
-                  <div className='col col-lg-6 col-md-6 col-sm-6'>
+                  <div className='col col-lg-5 col-md-5 col-sm-5'>
                   <DatePicker
                     className='select-hora'
                     selected={startHora}
@@ -93,25 +66,25 @@ export const Formulario = () => {
                 <input type="text" className='select-oficina' />
 
                 <div className='row pt-4'>
-                  <div className='col col-lg-6 col-md-6 col-sm-6'>
-                  <DatePicker
-                    className='select-fecha'
-                    dateFormat="yyyy/MM/dd"
-                    selected={endFecha}
-                    onChange={(date) => setEndFecha(date)}
-                  />
+                  <div className='col col-lg-7 col-md-7 col-sm-7'>
+                    <DatePicker
+                      className='select-fecha'
+                      dateFormat="dd/MM/yyyy"
+                      selected={endFecha}
+                      onChange={(date) => setEndFecha(date)}
+                    />
                   </div>
-                  <div className='col col-lg-6 col-md-6 col-sm-6'>
-                  <DatePicker
-                    className='select-hora'
-                    selected={endHora}
-                    onChange={(date) => setEndHora(date)}
-                    showTimeSelect
-                    showTimeSelectOnly
-                    timeIntervals={15}
-                    timeCaption="Time"
-                    dateFormat="h:mm aa"
-                  />
+                  <div className='col col-lg-5 col-md-5 col-sm-5'>
+                    <DatePicker
+                      className='select-hora'
+                      selected={endHora}
+                      onChange={(date) => setEndHora(date)}
+                      showTimeSelect
+                      showTimeSelectOnly
+                      timeIntervals={15}
+                      timeCaption="Time"
+                      dateFormat="h:mm aa"
+                    />
                   </div>
                 </div>
               </div>
@@ -129,7 +102,7 @@ export const Formulario = () => {
           </form>
 
           <div className='col col-md-4 col-sm-4 mt-5 text-end'>
-                <button onClick={loginFetch}>continuar</button>
+                <button >continuar</button>
               </div>
         </div>
     </div>
